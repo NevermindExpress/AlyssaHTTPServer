@@ -1,5 +1,11 @@
 # Alyssa HTTP Server Changelog
 
+# 3.9.9.9 "RELOAD" - 08.02.2026
+- This project is no longer under the Aceyware project family and is now instead a personal project.
+	- It will give way to a new project within Aceyware which will be more advanced and more professional.
+	- Alyssa will no longer receive feature expansions except in critical shortcomings or faults, and will instead enter maintenance mode and be finalized.
+- Small fixes to make it compile at all.
+
 ## 3.0.2.6 - 08.03.2025
 - partial fix for connections not getting closed in http0 or close flag set and sockets getting leaked
 

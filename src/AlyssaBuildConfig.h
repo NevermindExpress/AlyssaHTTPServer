@@ -5,10 +5,10 @@
 //#define branch "v3prerelease"
 
 // Compile with SSL support
-#define COMPILE_WOLFSSL
+//#define COMPILE_WOLFSSL
 
 // HTTP/2 support
-#define COMPILE_HTTP2
+//#define COMPILE_HTTP2
 #if defined COMPILE_HTTP2 && !defined COMPILE_WOLFSSL
 	#error SSL is required for HTTP/2 support.
 #endif
@@ -36,7 +36,7 @@
 #define COMPILE_LOCALES
 
 // Compile with zlib for gz encoding support.
-#define COMPILE_ZLIB
+//#define COMPILE_ZLIB
 
 #define LIB_B64CPP 1
 #define LIB_WOLFSSL 2

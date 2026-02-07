@@ -139,8 +139,6 @@ static int8_t caAuth(const char* auth, char* path) {
 						i += 2;
 					}
 					return 1;
-#else
-#error not implemented
 #endif
 				}
 
@@ -152,16 +150,24 @@ static int8_t caAuth(const char* auth, char* path) {
 	return 0;
 }
 
-#define caSendHeaders();\
-	if (c.flags & FLAG_HTTP2) {\
-			h2serverHeaders((clientInfo*)&c, (requestInfo*)&r, &h); \
-	}\
-	else {\
+#ifdef COMPILE_HTTP2
+	#define caSendHeaders()\
+		if (c.flags & FLAG_HTTP2) {\
+				h2serverHeaders((clientInfo*)&c, (requestInfo*)&r, &h); \
+		}\
+		else {\
+			serverHeaders(&h, (clientInfo*)&c); \
+			if (errorPagesEnabled && h.statusCode > 399) errorPagesSender((clientInfo*)&c); \
+			else if(r.flags & FLAG_CLOSE) epollRemove(((clientInfo*)(&c)));\
+			else epollCtl(((clientInfo*)(&c)), EPOLLIN | EPOLLONESHOT);\
+		}
+#else
+	#define caSendHeaders()\
 		serverHeaders(&h, (clientInfo*)&c); \
 		if (errorPagesEnabled && h.statusCode > 399) errorPagesSender((clientInfo*)&c); \
-		else if(r.flags & FLAG_CLOSE) epollRemove(((clientInfo*)(&c)));\
-		else epollCtl(((clientInfo*)(&c)), EPOLLIN | EPOLLONESHOT);\
-	}\
+		else if (r.flags & FLAG_CLOSE) epollRemove(((clientInfo*)(&c))); \
+		else epollCtl(((clientInfo*)(&c)), EPOLLIN | EPOLLONESHOT);
+#endif
 
 static int caExec(const clientInfo& c, const requestInfo& r, char* buf, int sz) {
 	customAction actions[3] = { 0 }; // Actions by their priority order.

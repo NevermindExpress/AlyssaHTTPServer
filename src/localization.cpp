@@ -27,9 +27,9 @@ const char* StringTable[LANG_END][STR_END+1] = {
 		"Server: ",
 		"Custom actions: ",
 #ifdef _DEBUG
-		"Aceyware \"Alyssa\" HTTP Server version " version " (debug)",
+		"Alyssa HTTP Server version " version " (debug)",
 #else
-		"Aceyware \"Alyssa\" HTTP Server version " version "",
+		"Alyssa HTTP Server version " version "",
 #endif
 		"Listening on",
 		" virtual hosts active",
@@ -53,7 +53,7 @@ const char* StringTable[LANG_END][STR_END+1] = {
 #ifdef branch
 		"This build is from work-in-progress experimental " branch " branch.\n"
 			"It may contain incomplete, unstable or broken code and probably will not respond to clients reliably. This build is for development purposes only.\n"
-			"If you don't know what any of that all means, get the latest stable release from here:\n \"https://www.github.com/Aceyware/AlyssaHTTPServer/releases/latest\"",
+			"If you don't know what any of that all means, get the latest stable release from here:\n \"https://www.github.com/NevermindExpress/AlyssaHTTPServer/releases/latest\"",
 #endif
 		"Error binding socket on IPv%d port %d. \nMake sure port is not in use by another program.",
 		"Error binding socket on port %d (OS assigned socket on another port)\n"
@@ -96,9 +96,9 @@ const char* StringTable[LANG_END][STR_END+1] = {
 		u8"Sunucu:",
 		u8"Özel eylem: ",
 		#ifdef _DEBUG
-		u8"Aceyware \"Alyssa\" HTTP Sunucusu " version u8" sürümü (hata ayıklama)",
+		u8"Alyssa HTTP Sunucusu " version u8" sürümü (hata ayıklama)",
 #else
-		u8"Aceyware \"Alyssa\" HTTP Sunucusu " version u8" sürümü",
+		u8"Alyssa HTTP Sunucusu " version u8" sürümü",
 #endif
 		u8"Şu kapılar dinleniyor:",
 		u8" sanal sunucu etkin",
@@ -122,7 +122,7 @@ const char* StringTable[LANG_END][STR_END+1] = {
 #ifdef branch
 		u8"Bu yapı tamamlanmamış deneysel" branch u8"dalından derlendi.\n"
 			u8"Tamamlanmamış, kararsız veya bozuk kod içerebilir ve büyük ihtimal istemcilere güvenilir şekilde yanıt vermeyecektir. Bu yapı sadece geliştirme amaçlıdır.\n"
-			u8"Bunlarının hiçbirinin ne anlama geldiğini bilmiyorsanız \"https://www.github.com/AlyssaSoftware/AlyssaHTTPServer/releases/latest\" adresinden en son kararlı yapıyı alın."
+			u8"Bunlarının hiçbirinin ne anlama geldiğini bilmiyorsanız \"https://www.github.com/NevermindExpress/AlyssaHTTPServer/releases/latest\" adresinden en son kararlı yapıyı alın."
 #endif // branch
 		u8"IPv%d %d portunda soket tanımlama başarısız oldu. \nPortun kullanımda olmadığıdan emin olun.\n",
 		u8"IPv%d %d portunda soket tanımlama başarısız oldu. (OS başka bir port atadı.) \n"

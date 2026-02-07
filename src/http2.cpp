@@ -700,9 +700,9 @@ void h2serverHeaders(clientInfo* c, requestInfo* r, respHeaders* h) {
 	i -= 9; buf[1] = i >> 8; buf[2] = i >> 0;
 	wolfSSL_send(c->ssl, buf, i + 9, 0); return;
 }
-#endif
 
 static void h2serverHeadersInline(clientInfo* c, requestInfo* r, unsigned short statusCode, unsigned long long conLength, char flags, char* arg) {// Same one but without headerParameters type argument.
 	respHeaders h{ statusCode,conLength,arg,0,flags };
 	h2serverHeaders(c, r, &h);
 }
+#endif

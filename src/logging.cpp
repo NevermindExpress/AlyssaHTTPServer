@@ -118,7 +118,7 @@ int printa(int String, char Type, ...) {
 /// </summary>
 void printInformation() {
 	printa(STR_LISTENINGON, TYPE_INFO | TYPE_FLAG_NOLOG | TYPE_FLAG_NOTIME); 
-	std::cout << "HTTP: ";
+	std::cout << "- HTTP: ";
 	if(!ports.size()) {
 		// This deliberately uses direct reference to string so we can
 		// easily check for any missing strings in string table.
@@ -128,7 +128,7 @@ void printInformation() {
 		std::cout << ports[i].port << " ";
 	}
 #ifdef COMPILE_WOLFSSL
-	std::cout << "HTTPS: ";
+	std::cout << "- HTTPS: ";
 	if (sslEnabled) {
 		for (int i = 0; i < sslPorts.size(); i++) {
 			std::cout << sslPorts[i].port << " ";

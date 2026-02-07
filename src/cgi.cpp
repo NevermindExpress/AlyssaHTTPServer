@@ -2,10 +2,14 @@
 #ifdef COMPILE_CGI
 #include "external/subprocess.h"
 
+#ifdef COMPILE_WOLFSSL
 static int Send(const clientInfo& c, const char* buf, int sz) {
 	if (c.flags & FLAG_SSL) return wolfSSL_send(c.ssl, buf, sz, 0);
 	else return send(c.s, buf, sz, 0);
 }
+#else
+#define Send(c,buf,sz) send(c.s, buf, sz, 0)
+#endif
 
 static void serverHeadersMinimal(const clientInfo& c) {
 	char buf[300] = "HTTP/1.1 200 OK\r\nTransfer-Encoding: chunked\r\nDate: "; short pos = 51;

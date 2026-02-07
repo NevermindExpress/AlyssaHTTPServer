@@ -71,6 +71,7 @@ testhtroot
 *.res
 *.aps
 resource.h
+RC*
 
 # CGI test apps
 *.bat
@@ -79,4 +80,3 @@ resource.h
 *.txt
 *.user
 *.db
-/YAZSANA.AMK

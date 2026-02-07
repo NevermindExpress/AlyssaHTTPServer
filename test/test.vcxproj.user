@@ -7,5 +7,6 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LocalDebuggerCommandArguments>C:\Users\Administrator\source\repos\alyssahttpserver alyssa31.exe</LocalDebuggerCommandArguments>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
+    <LocalDebuggerCommandArgumentsHistory>C:\Users\Administrator\source\repos\alyssahttpserver alyssa31.exe|</LocalDebuggerCommandArgumentsHistory>
   </PropertyGroup>
 </Project>

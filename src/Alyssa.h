@@ -1,23 +1,5 @@
 #pragma once
 
-///  .d888888                                                                      
-/// d8'    88                                                                      
-/// 88aaaaa88a .d8888b. .d8888b. dP    dP dP  dP  dP .d8888b. 88d888b. .d8888b.    
-/// 88     88  88'  `"" 88ooood8 88    88 88  88  88 88'  `88 88'  `88 88ooood8    
-/// 88     88  88.  ... 88.  ... 88.  .88 88.88b.88' 88.  .88 88       88.  ...    
-/// 88     88  `88888P' `88888P' `8888P88 8888P Y8P  `88888P8 dP       `88888P'    
-///                                   .88                                          
-///                               d8888P                  
-///                         
-///                          .d888888  dP                                          
-///                         d8'    88  88                                          
-///                         88aaaaa88a 88 dP    dP .d8888b. .d8888b. .d8888b.      
-///                         88     88  88 88    88 Y8ooooo. Y8ooooo. 88'  `88      
-///                         88     88  88 88.  .88       88       88 88.  .88      
-///                         88     88  dP `8888P88 `88888P' `88888P' `88888P8      
-///                                            .88                                 
-///                                        d8888P                                  
-
 #include <stdio.h>
 #include <string.h>
 #include <time.h>
@@ -116,7 +98,7 @@ extern const char* version;
 ///  888888'   `88888P8 dP       dP `88888P8 88Y8888' dP `88888P' `88888P' 
 ///  (and constants)                                                                       
 
-#define version "3.0.2.6"
+#define version "3.9.9.9"
 extern std::string htrespath;
 extern unsigned int maxpath;
 extern unsigned int maxauth;
@@ -260,7 +242,10 @@ typedef struct clientInfo {
 		} else {
 			stream[0].clean(); stream[1].path[0] = '\0';
 		}
-		flags = 0; ssl = NULL;
+		flags = 0; 
+		#ifdef COMPILE_WOLFSSL
+			ssl = NULL;
+		#endif
 	}
 
 #ifdef COMPILE_WOLFSSL

@@ -33,7 +33,11 @@ void methodGetPostInit(clientInfo* c, int nStream) {
 	// Common variables
 	requestInfo* r;		// The stream data.
 	char* buff;			// Buffer to use throughout this function.
-	const int sz = (c->flags & FLAG_HTTP2) ? h2bufsz : bufsize;	// Buffer size 
+#ifdef COMPILE_HTTP2
+	const int sz = (c->flags & FLAG_HTTP2) ? h2bufsz - 9 : bufsize;	// Buffer size 
+#else
+	const int sz = bufsize;	// Buffer size 
+#endif
 	respHeaders h;		// Response header data.
 	int8_t fsm = 0;		// File send mode, refer to end of function.
 
@@ -260,12 +264,13 @@ getRestart:
 					h.statusCode = 200;
 					r->fs = h.conLength;
 				}
+
 				if (r->method == METHOD_HEAD) {// If head request, send headers and exit.
 					// Close file because it won't be used anyway.
 					fclose(r->f); r->f = NULL;
 					goto getEnd;
 				} // Else keep going.
-				else if (r->fs < h2bufsz - 9) {
+				else if (r->fs < sz - 9) {
 					fsm = 1;
 #ifdef COMPILE_ZLIB
 					if (gzEnabled && r->fs < sz / 2 - 9) {
